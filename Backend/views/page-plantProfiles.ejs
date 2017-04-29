@@ -1,0 +1,275 @@
+<!--
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.0-alpha.4
+ * @link http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license MIT
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,jQuery,CSS,HTML,RWD,Dashboard">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Plant Profiles - Page Edit | QLD Reveg Site</title>
+
+    <!-- Icons -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Main styles for this application -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/customStyle.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="bower_components/sweetalert/sweetalert.css" rel="stylesheet">
+
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+<header class="app-header navbar">
+    <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">☰</button>
+    <a class="navbar-brand" href="#"></a>
+    <ul class="nav navbar-nav hidden-md-down">
+        <li class="nav-item">
+            <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <img src="/img/logo.png" class="img-avatar">
+                <span class="hidden-md-down">QLD Reveg Seed</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header text-center">
+                    <strong>Settings</strong>
+                </div>
+                <a class="dropdown-item" href="/auth/logout"><i class="fa fa-lock"></i> Logout</a>
+            </div>
+        </li>
+    </ul>
+</header>
+
+<div class="app-body">
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="icon-speedometer"></i> Dashboard</a>
+                </li>
+                <li class="nav-title">
+                    Main Menu
+                </li>
+                <li class="nav-item nav-dropdown open">
+                    <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-database"></i> Page Editor</a>
+                    <ul class="nav-dropdown-item">
+                        <li class="nav-item open">
+                            <a class="nav-link active" href="/page-edit/plant-profiles"><i class="fa fa-table"></i> Plant Profiles</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main content -->
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Page Editor</li>
+            <li class="breadcrumb-item active">Plant Profiles</li>
+        </ol>
+        <div class="container-fluid">
+            <div class="animated fadeIn" id="main">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fa fa-edit"></i>Plant Profiles
+                            </div>
+                            <div class="card-block">
+                                <div class="plant-profiles-header">
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-primary" id="btn-add-profile" data-toggle="modal" data-target="#modal-new-profile"><i class="fa fa-plus fa-lg mt-2 button-icon"></i> Add New</button>
+                                        <input type="text" id="profile-search" placeholder="Search..." autocomplete="off" class="form-control input-lg">
+                                    </div>
+                                </div>
+                                <div class="plant-profiles-body" id="profiles-body">
+                                    <div class="row" style="padding-left: 20px; padding-bottom: 20px">
+                                        <h6 id="profile-results-count"></h6>
+                                    </div>
+                                    <div class="row" id="profile-container">
+                                        <i class="fa fa-spinner fa-lg mt-2 fa-spin center-horizontal"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modal-new-profile" tabindex="-1" role="dialog" aria-labelledby="modal-new-profile" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-primary" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add New Plant Profile</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group" id="profile-add-plant_name-form">
+                                    <label for="name">Plant Name</label>
+                                    <input type="text" class="form-control" id="profile-add-plant_name" placeholder="Acacia...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="name">Plant Description</label>
+                                    <textarea id="profile-add-plant_description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="profile-add-file-inputs">
+                            <div class="row">
+                                <div class="form-group col-md-6" style="margin-left: 5px">
+                                    <label class="col-md-3 form-control-label" for="profile-add-photo1-file">Photo 1</label>
+                                    <div class="col-md-9" id="profile-add-photo1-status">
+                                        <input type="file" class="form-control-file" name="profile-add-photo1-file" id="profile-add-photo1-file" data-picture-uploaded="false" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5" id="profile-add-photo1-area">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="checkbox checkbox-success">
+                                    <input id="profile-add-map" class="styled" type="checkbox" checked>
+                                    <label for="profile-add-map">
+                                        Include AVH Distribution Map
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="addProfile();" disabled="disabled" id="profile-add-save">Save</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+
+        <div class="modal fade" id="modal-edit-profile" tabindex="-1" role="dialog" aria-labelledby="modal-edit-profile" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-primary" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="profile-edit-modal-title">Edit Plant Profile</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group" id="profile-edit-plant_name-form">
+                                    <label for="name">Plant Name</label>
+                                    <input type="text" class="form-control" id="profile-edit-plant_name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="name">Plant Description</label>
+                                    <textarea id="profile-edit-plant_description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12" style="margin-left: 15px">
+                            <div class="row" id="profile-edit-photo-area" style="padding-bottom: 15px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="checkbox checkbox-success">
+                                <input id="profile-edit-map" class="styled" type="checkbox" checked>
+                                <label for="profile-edit-map">
+                                    Include AVH Distribution Map
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="profile-edit-save" onclick="profileEditSave();">Save</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+        <div class="modal fade" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="image-modal" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-success" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="image-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body center-horizontal" id="image-img-area">
+                        <img src="" style="max-width: 460px;height: auto">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </main>
+</div>
+
+<footer class="app-footer">
+  <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a>
+  </span>
+</footer>
+
+<!-- Bootstrap and necessary plugins -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/tether/dist/js/tether.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/pace/pace.min.js"></script>
+<script src="bower_components/tinymce/tinymce.min.js"></script>
+<script src="bower_components/sweetalert/sweetalert.min.js"></script>
+<script src="js/bootstrap-notify.min.js"></script>
+<script src="js/plantProfiles.min.js"></script>
+
+<!-- Plugins and scripts required by all views -->
+<!-- <script src="bower_components/chart.js/dist/Chart.min.js"></script> -->
+
+<!-- GenesisUI main scripts -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

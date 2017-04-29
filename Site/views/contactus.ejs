@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/head.ejs %>
+    <meta name="description" content="Contact QLD Revegetation Seed here.">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+<% include templates/nav.ejs %>
+
+<div class="container">
+    <section id="one">
+        <% if(messageSent !== "")  {%>
+            <%  if(messageSent.error == false)  {%>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <strong>Congratulations!</strong> The message was sent successfully!
+                </div>
+            <%  }   else    {   %>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <strong>Oh no!</strong> There was an error sending the message
+                </div>
+            <%  }   %>
+        <%  }   %>
+        <h3>Contact Us</h3>
+        <br>
+        <form action="/contact-us" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="Name"  style="border-color: #424242" required>
+            </div>
+            <div class="form-group">
+                <label for="company">Company/Business Name:</label>
+                <input type="text" class="form-control" id="company" name="Company" style="border-color: #424242" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" class="form-control" id="phone" name="Phone" style="border-color: #424242">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="text" class="form-control" id="email" name="Email" style="border-color: #424242" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" name="Message" style="height: 150px; border-color: #424242"></textarea>
+            </div>
+            <div class="form-group">
+                <div id="captcha" style="display: inline-block;">
+                    <div class="g-recaptcha" data-sitekey="6LctoxgUAAAAAA0HS1WBkNdjojaU6y5wvNzEKgcZ"></div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">Send</button>
+        </form>
+
+    </section>
+
+    <% include templates/footer.ejs%>
+</div> <!-- /container -->
+
+<% include templates/base.ejs%>
+<script language="javascript">
+    $("form").submit(function(event) {
+
+        var recaptcha = $("#g-recaptcha-response").val();
+        if (recaptcha === "") {
+            event.preventDefault();
+            alert("Please check the recaptcha");
+        }
+    });
+</script>
+</body>
+</html>

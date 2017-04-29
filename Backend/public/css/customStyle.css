@@ -1,0 +1,27 @@
+.center-horizontal{
+    text-align: center;
+    margin: 0 auto !important;
+}
+
+.plant-profile-button{
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.plant-profiles-body{
+    margin-top: 20px;
+}
+
+.profile-body{
+    overflow: hidden;
+    max-height: 140px;
+    min-height: 140px;
+}
+
+.profile-footer{
+    margin-top: 20px !important;
+}
+
+.button-icon{
+    margin: 0 !important;
+}

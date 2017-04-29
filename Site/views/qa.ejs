@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/head.ejs%>
+    <meta name="description" content="QLD Revegetation Seed continues to develop a quality assurance program for our Australian native seeds.">
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+<% include templates/nav.ejs%>
+
+<div class="container">
+    <section id="one">
+        <h3>Quality Assurance</h3>
+        <br>
+        <div class="row">
+            <div class="col-xl-3">
+                <img src="/images/dicanthium_sericeum.jpg" title="Dicanthium sericeum | QLD Regetation Seed" alt="Dicanthium sericeum | QLD Regetation Seed" style="width: 250px; height: auto">
+                <br>
+            </div>
+            <div class="col-xl-9">
+                <p>QLD Revegetation Seed continues to develop a quality assurance program for our Australian native seeds. Seed testing is completed via agents such as Queensland Seed Technology Laboratory. We also provide material to aid in the visual identification of seeds and germinants. The results of seed testing and other information are only made available to clients.</p>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <button id="client-login" href="" onclick="window.open('https://cloud.qldrevegetationseed.com/');" class="btn btn-lg btn-outline-primary"><i class="fa fa-sign-in" aria-hidden="true"></i> Client Login</button>
+        </div>
+    </section>
+
+    <% include templates/footer.ejs%>
+</div> <!-- /container -->
+
+<% include templates/base.ejs%>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/head.ejs%>
+    <meta name="description" content="QLD Revegetation Seed facilities are large enough to mix, bag and dispatch seed orders of the largest size.">
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+<% include templates/nav.ejs%>
+
+<div class="container">
+    <section id="one">
+        <h3>About Us</h3>
+
+        <div class="row">
+            <div class="col-md-9">
+                <p>QLD Revegetation Seed is owned and managed by Lachlan Scanlan. Lachlan began propagating and selling container plants from a very young age. He’s maintained a lifelong deep connection with the Australian bush. Since finishing his education he has spent twenty-nine years in horticulture including fourteen years operating a production nursery, hydroponic cut flower and herb production, retail nursery sales and of course native seed production. Lachlan commenced involvement with native seed in 2005 and this developed in response to demand for product required for export to overseas markets. Involvement with seed aimed for rehabilitation works, especially in mines, soon followed from here.</p>
+            </div>
+            <div class="col-md-3" style="display: inline-block">
+                <img src="/images/lachlan_scanlan.jpg" title="Lachlan Scanlan" alt="Lachlan Scanlan" style="width: 250px; height: auto">
+                <div style="text-align: right">
+                    <span class="tag tag-default">Lachlan Scanlan</span>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-xl-5">
+                <div class="col-xl-12" style="text-align: left; padding-left: 0%">
+                    <figure>
+                        <img src="/images/about3.jpg" title="Bunya Mountains, near QLD Revegetation Seed" alt="Bunya Mountains, near QLD Revegetation Seed" style="width: 370px; height: auto">
+                        <figcaption>
+                            Bunya Mountains, near QLD Revegetation Seed
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="col-xl-12" style="text-align: left; padding-left: 0%">
+                    <figure>
+                        <img src="/images/about2.jpg" title="near QLD Revegetation Seed" alt="near QLD Revegetation Seed" style="width: 370px; height: auto">
+                        <figcaption>
+                            near QLD Revegetation Seed
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-xl-7">
+                <p>Producing a comprehensive offering of native seeds in volume is a task requiring substantial planning, organisation and of course travelling. Our site consisting of drying houses, shedding and climate controlled seed storage areas was purposefully selected for the logistical considerations it satisfies. QLD Revegetation Seed is located at Chelmsford, about twenty minutes north of Kingaroy in Queensland. Every year we harvest native seed from places inside an area roughly bounded by points west of Mackay, to Tambo in western Qld and to the northern Tablelands and North Western slopes of NSW. Importantly also, our location allows convenient access to a diverse array of local vegetation. We harvest native seeds from numerous private holdings and various State Forest areas.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-7">
+                <p>The Qld Revegetation Seed facilities are large enough to mix, bag and dispatch seed orders of the largest size for our mining clients. </p>
+                <div class="map" id="map"></div>
+            </div>
+            <div class="col-xl-5">
+                <div class="col-xl-12" style="text-align: right; padding-right: 0%">
+                    <figure>
+                        <img src="/images/shed1.jpg" title="QLD Revegetation Seed, Chelmsford QLD" alt="QLD Revegetation Seed, Chelmsford QLD" style="width: 370px; height: auto">
+                        <figcaption>
+                            QLD Revegetation Seed, Chelmsford QLD
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="col-xl-12" style="text-align: right; padding-right: 0%">
+                    <figure>
+                        <img src="/images/shed2.jpg" title="QLD Revegetation Seed, Chelmsford QLD" alt="QLD Revegetation Seed, Chelmsford QLD" style="width: 370px; height: auto">
+                        <figcaption>
+                            QLD Revegetation Seed, Chelmsford QLD
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <% include templates/footer.ejs%>
+</div> <!-- /container -->
+
+<% include templates/base.ejs%>
+<script>
+    function initMap() {
+        var qldrevegseed = {lat: -26.268542, lng: 151.811153};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 6,
+            center: qldrevegseed
+        });
+        var marker = new google.maps.Marker({
+            position: qldrevegseed,
+            map: map
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvNBRiU65GQ7AuU7IgOlcZz73I87xERIM&callback=initMap">
+</script>
+</body>
+</html>

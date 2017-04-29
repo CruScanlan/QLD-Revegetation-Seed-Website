@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="author" content="QLD Revegetation Seed">
+<meta name="keywords" content="QLD,qld,revegetation,seed,rehabilitation,native,eucalyptus,wattle,acacia,queensland,australia,australian,tree,shrub,grass,quality,assurance,science,list">
+<link rel="icon" href="/favicon.ico">
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-64069841-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<%  let finalTitle = ""; %>
+<%  if(!title){  %>
+<%      finalTitle = "QLD Revegetation Seed" %>
+<%  }   else    {   %>
+<%      finalTitle = title+" | QLD Revegetation Seed" %>
+<%  }   %>
+<%  if(subTitle)   {%>
+<%      finalTitle = finalTitle+" - "+subTitle    %>
+<%  }   %>
+<title><%= finalTitle  %></title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/css/bootstrap4.css">
+
+<!-- Font Awsome -->
+<link rel="stylesheet" href="venders/font-awesome-4.7.0/css/font-awesome.min.css">
+
+<!-- Some extra styles -->
+<link rel="stylesheet" href="/css/style.css">

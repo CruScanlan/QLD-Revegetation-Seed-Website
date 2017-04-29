@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/head.ejs%>
+    <meta name="description" content="This page profiles plant taxa which are commonly employed in the rehabilitation of mine sites at QLD Revegetation Seed.">
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+<% include templates/nav.ejs%>
+
+<div class="container">
+    <section id="one">
+        <h3>Plant Profiles</h3>
+        <br>
+        <p>This page profiles plant taxa which may be employed in the rehabilitation of mine sites. The distributions of plants are included so you can ascertain the relevance of various taxa to a site. Australia's Virtual Herbarium can be further engaged for this purpose and it is worth some time learning how to use this valuable resource.</p>
+        <br>
+        <p style="color: red">*This list is a work in progress</p>
+
+        <div id="profiles" role="tablist" aria-multiselectable="true">
+
+            <%  for(let i=0; i<profiles.length ;i++)  {   %>
+            <!-- <%= profiles[i].name %> -->
+            <div class="card">
+                <div class="card-header" role="tab" id="<%= profiles[i].name.split(" ").join("-") %>">
+                    <h5 class="card-title">
+                        <a data-toggle="collapse" data-parent="#profiles" href="#<%= profiles[i].name.split(" ").join("-") %>-inside" aria-expanded="false" aria-controls="<%= profiles[i].name.split(" ").join("-") %>-inside">
+                            <%= profiles[i].name %>
+                        </a>
+                    </h5>
+                </div>
+                <div id="<%= profiles[i].name.split(" ").join("-") %>-inside" class="collapse" role="tabcard" aria-labelledby="<%= profiles[i].name.split(" ").join("-") %>">
+                    <div class="card-block">
+                        <%- profiles[i].description %>
+                        <div style="text-align: center">
+                            <% if(profiles[i].map)  {   %>
+                                <button id="<%= profiles[i].name.split(" ").join("-") %>-avh" class="btn btn-lg btn-outline-success" onclick="window.open('http://avh.ala.org.au/occurrences/search?taxa=<%= profiles[i].name %>#tab_mapView');">AVH Distribution Map</button>
+                            <%  }   %>
+                            <br><br>
+                            <div class="container">
+                                    <%  if(profiles[i].pictures.length == 1) {%>
+                                        <div class="row">
+                                            <div class="col-sm-12 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[0].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[0].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[0].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    <%  }   else    if(profiles[i].pictures.length == 2)    {%>
+                                        <div class="row">
+                                            <div class="col-sm-6 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[0].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[0].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[0].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                            <div class="col-sm-6 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[1].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[1].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[1].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    <%  }   else    if(profiles[i].pictures.length == 3) {%>
+                                        <div class="row">
+                                            <div class="col-sm-6 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[0].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[0].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[0].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                            <div class="col-sm-6 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[1].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[1].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[1].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-sm-12 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[2].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[2].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[2].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    <%  }   else    if(profiles[i].pictures.length == 4)    {%>
+                                        <div class="row">
+                                            <div class="col-sm-6 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[0].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[0].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[0].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                            <div class="col-sm-6 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[1].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[1].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[1].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-sm-6 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[2].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[2].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[2].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                            <div class="col-sm-6 img">
+                                                <figure>
+                                                    <img src="<%=   profiles[i].pictures[3].url   %>" title="<%=  profiles[i].name   %> | QLD Revegetation Seed" alt="<%=  profiles[i].name   %> | QLD Revegetation Seed">
+                                                    <%  if(profiles[i].pictures[3].caption != "") {%>
+                                                        <figcaption>
+                                                            <%= profiles[i].pictures[3].caption %>
+                                                        </figcaption>
+                                                    <%  }   %>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    <%  }   %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /<%= profiles[i].name %> -->
+            <%    }   %>
+
+        </div>
+
+
+    </section>
+
+    <% include templates/footer.ejs%>
+</div> <!-- /container -->
+
+<% include templates/base.ejs%>
+</body>
+</html>

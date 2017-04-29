@@ -1,0 +1,13 @@
+{
+  "sendgrid": "",
+  "twilio"  : {
+    "id": "",
+    "token" : ""
+  },
+  "mysql":  {
+    "host": "",
+    "user": "",
+    "password": "",
+    "database": ""
+  }
+}

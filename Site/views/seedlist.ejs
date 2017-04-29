@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/head.ejs%>
+    <meta name="description" content="Please contact us for a quotation on your current seed requirements or in regard to planning a future purchase.">
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+<% include templates/nav.ejs%>
+
+<div class="container">
+    <section id="one">
+        <h3>Seed List</h3>
+        <p>Variable weather and market conditions among many other things induce the need for revision of prices on a regular basis. Please contact us for a quotation on your current seed requirements or in regard to planning a future purchase. We emphasise here and as often as possible that irregular native plant seed availability has to date been a constant and industry wide factor which the producers and consumers alike have needed to compensate for. As the importance of complying with species lists increases and as the diversity and/or volumes associated with those lists increases then so does the risk of supply failure. While Queensland Revegetation Seed stocks a large amount of popular native seeds in inventory we strongly recommend planning your seed purchases well in advance to reduce risk of supply failure and to maximise efficiencies leading to lower seed costs. We welcome the chance to discuss your requirements in more detail, to discuss the observations you've made at your sites and to add any additional knowledge to the pool that we can. Rehabilitation with native Australian plants is mostly still a very young science and we know we'll be learning for as long as we are involved. Feel free to enquire about prices and to share your thoughts.</p>
+        <br>
+        <div style="text-align: center">
+            <button id="download" href="" class="btn btn-lg btn-outline-primary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> 2015 Seed List - QLD Revegetation Seed</button>
+            <br><br>
+            <img src="/images/erythrina_vespertillio.jpg" title="Erythrina vespertillio | QLD Revegetation Seed" alt="Erythrina vespertillio | QLD Revegetation Seed" style="border-radius: 15%;box-shadow: -4px 0 black, 0 4px black, 4px 0 black, 0 -4px black;">
+        </div>
+    </section>
+
+    <% include templates/footer.ejs%>
+</div> <!-- /container -->
+
+<% include templates/base.ejs%>
+<script type="text/javascript">
+    document.getElementById("download").onclick = function () {
+        window.open("/files/2015%20Seed%20List%20-%20QLD%20Revegetation%20Seed.pdf");
+    };
+</script>
+</body>
+</html>
